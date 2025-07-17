@@ -1,19 +1,19 @@
-import express from 'express';
+import { Router } from 'express';
 import { Recipe } from '../../shared/types';
 import camelcaseKeys from 'camelcase-keys';
+import db from '../db';
 
-const router = express.Router();
-const db = require('../db');
+const router = Router();
 
-router.get('/', async (_req, res) => {
+router.get('/', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM recipes;');
-    const recipes: Recipe[] = camelcaseKeys(result.rows, {deep: true})
+    const recipes: Recipe[] = camelcaseKeys(result.rows, { deep: true });
     res.json(recipes);
   } catch (err) {
     console.error('Error querying recipes: ', err);
-    res.status(500).json({error: 'Internal services error'});
+    res.status(500).json({ error: 'Internal services error' });
   }
-})
+});
 
-module.exports = router;
+export default router;

@@ -1,14 +1,12 @@
 import express from 'express';
 import cors from 'cors';
+import * as dotenv from 'dotenv';
+import recipeRoutes from './routes/recipes';
+import ingredientRoutes from './routes/ingredients';
 
-require('dotenv').config();
+dotenv.config();
 
 const app = express();
-
-
-const recipeRoutes = require('./routes/recipes');
-const ingredientRoutes = require('./routes/ingredients');
-// const db = require('./db');
 
 app.use(cors());
 app.use(express.json());
