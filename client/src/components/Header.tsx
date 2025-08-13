@@ -7,7 +7,6 @@ import { Button } from './Button';
 export function Header(): JSX.Element {
   return (
     <HeaderContainer className="bg-white shadow-sm border-b">
-      {/* Logo */}
       <div className="flex items-center space-x-2">
         <Link to={'/'}>
           <ChefHat className="h-8 w-8 text-orange-500" />
@@ -15,7 +14,6 @@ export function Header(): JSX.Element {
         </Link>
       </div>
 
-      {/* Navigation */}
       <Navigation className="hidden md:flex items-center space-x-8">
         <a
           href="#"
@@ -24,10 +22,10 @@ export function Header(): JSX.Element {
           Recipes
         </a>
         <a
-          href="#"
+          href="/create-recipe"
           className="text-gray-700 hover:text-orange-500 transition-colors"
         >
-          Categories
+          Create a Recipe
         </a>
         <a
           href="#"
@@ -43,7 +41,6 @@ export function Header(): JSX.Element {
         </a>
       </Navigation>
 
-      {/* Actions */}
       <ButtonContainer>
         <Button icon={Heart} iconPosition="left" />
         <Button icon={User} iconPosition="left" />
