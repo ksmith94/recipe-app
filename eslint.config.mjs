@@ -6,6 +6,7 @@ import json from '@eslint/json';
 import css from '@eslint/css';
 import { defineConfig } from 'eslint/config';
 import pluginPrettier from 'eslint-plugin-prettier';
+import prettierConfig from 'eslingt-config-prettier';
 
 export default defineConfig([
   // ✅ JavaScript & TypeScript support
@@ -33,8 +34,9 @@ export default defineConfig([
       prettier: pluginPrettier,
     },
     rules: {
-      ...js.configs.recommended.rules,
+      ...tseslint.config.recommended.rules,
       'prettier/prettier': 'error',
+      ...prettierConfig.rules,
     },
   },
 
@@ -74,5 +76,8 @@ export default defineConfig([
     rules: {
       ...css.configs.recommended.rules,
     },
+  },
+  {
+    extends: ['prettier'],
   },
 ]);
