@@ -1,0 +1,95 @@
+import { JSX } from 'react';
+import styled from 'styled-components';
+import { RecipeCreationInput } from './RecipeCreationInput';
+
+export interface RecipeCreationDetails {
+  title: string;
+  description: string;
+  servings: string;
+  prepTime: string;
+  cookTime: string;
+  effortLevel: 1 | 2 | 3 | 4 | 5;
+}
+
+interface RecipeDetailProps {
+  details: RecipeCreationDetails;
+  setDetails: (details: RecipeCreationDetails) => void;
+}
+
+export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.Element {
+
+  function handleChange(id: keyof RecipeCreationDetails, value: string | number) {
+    setDetails({...details, [id]: value})
+  }
+
+  return (
+    <FormContainer>
+      <form>
+        <RecipeCreationInput
+          inputType="text"
+          label="Recipe Title"
+          id="title"
+          required={true}
+          onChange={(e) => handleChange('title', e.target.value)}
+        />
+        <br />
+        <RecipeCreationInput
+          inputType="text"
+          label="Description"
+          id="description"
+          required={false}
+          onChange={(e) => handleChange('description', e.target.value)}
+        />
+        <br />
+        <RecipeCreationInput
+          inputType="text"
+          label="Servings"
+          id="servings"
+          required={true}
+          onChange={(e) => handleChange('servings', e.target.value)}
+        />
+        <br />
+        <RecipeCreationInput
+          inputType="text"
+          label="Prep Time"
+          id="prep-time"
+          required={true}
+          onChange={(e) => handleChange('prepTime', e.target.value)}
+        />
+        <br />
+        <RecipeCreationInput
+          inputType="text"
+          label="Cook Time"
+          id="cook-time"
+          required={true}
+          onChange={(e) => handleChange('cookTime', e.target.value)}
+        />
+        <br />
+        <p>Total Time: 20 minutes</p>
+        <br />
+        <RecipeCreationInput
+          inputType="range"
+          label="Effort Level"
+          id="effort"
+          min={1}
+          max={5}
+          step={1}
+          required={true}
+          onChange={(e) => handleChange('effortLevel', e.target.value)}
+        />
+      </form>
+    </FormContainer>
+  );
+}
+
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 4rem;
+  margin: 0.5rem auto;
+  border-radius: 8px;
+  width: fit-content;
+  color: ${({ theme }) => theme.colors.primary.green900};
+  background-color: ${({ theme }) => theme.colors.primary.green100};
+`;
