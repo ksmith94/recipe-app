@@ -16,4 +16,47 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  const {
+    title,
+    description,
+    servings,
+    prepTime,
+    cookTime,
+    effortLevel,
+    ingredients,
+    instructions,
+    tags
+  } = req.body;
+
+  try {
+    const result = await db.query(
+      `
+        INSERT INTO recipes
+          (title, description, servings, prepTime, cookTime, effortLevel, ingredients, instructions, tags)
+        VALUES
+          ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        RETURNING *;
+      `,
+      [
+        title,
+        description,
+        servings,
+        prepTime,
+        cookTime,
+        effortLevel,
+        ingredients,
+        instructions,
+        tags
+      ]
+
+    )
+    const createdRecipe: Recipe = camelcaseKeys(result.rows[0], {deep: true});
+    res.status(201).json(createdRecipe);
+  } catch (err) {
+    console.error('Error creating recipe: ', err);
+    res.status(500).json({error: 'Failed to create recipe'});
+  }
+})
+
 export default router;
