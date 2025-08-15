@@ -12,12 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.json());
-
 // Routes
 app.use('/api/recipes/', recipeRoutes);
 app.use('/api/ingredients', ingredientRoutes);
 app.use('/api/instructions', instructionRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

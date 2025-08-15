@@ -49,8 +49,6 @@ router.post('/', async (req, res) => {
         prepTime,
         cookTime,
         effortLevel,
-        ingredients,
-        instructions,
       ]
     )
     const recipeId = recipeResult.rows[0].id;

@@ -4,6 +4,7 @@ import { RecipeCreationInput } from './RecipeCreationInput';
 
 export interface RecipeCreationDetails {
   title: string;
+  image?: string;
   description: string;
   servings: string;
   prepTime: string;
@@ -20,6 +21,19 @@ export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.
 
   function handleChange(id: keyof RecipeCreationDetails, value: string | number) {
     setDetails({...details, [id]: value})
+  }
+
+  function getTotalTime() {
+    if (!details.cookTime && !details.prepTime) {
+      return '––'
+    } else if (!details.prepTime) {
+      return details.cookTime + ' minutes';
+    } else if (!details.cookTime) {
+      return details.prepTime + ' minutes';
+    }
+
+    const totalTime = parseInt(details.prepTime) + parseInt(details.cookTime);
+    return `${totalTime} minutes`;
   }
 
   return (
@@ -65,7 +79,7 @@ export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.
           onChange={(e) => handleChange('cookTime', e.target.value)}
         />
         <br />
-        <p>Total Time: 20 minutes</p>
+        <p>{`Total Time: ${getTotalTime()}`}</p>
         <br />
         <RecipeCreationInput
           inputType="range"
