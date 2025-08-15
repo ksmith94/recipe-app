@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IngredientCard } from '../components/RecipePage/IngredientCard';
 import { InstructionCard } from '../components/RecipePage/InstructionCard';
 import { RecipeDetailCard } from '../components/RecipePage/RecipeDetailCard';
-import { RecipeSmallSection } from '../components/RecipePage/RecipePage.styles';
 
 export type Recipe = {
   title: string;
@@ -28,7 +27,6 @@ export function RecipePage({ recipe }: RecipePageProps): JSX.Element {
   return (
     <Container>
       <Title>{recipe.title}</Title>
-      {/* <RecipeImage src={recipe.image} alt={recipe.title} /> */}
       <ImageContainer>
         <Image src={recipe.image} />
       </ImageContainer>
@@ -65,41 +63,9 @@ const Title = styled.h1`
   margin-bottom: 0.5rem;
 `;
 
-const RecipeImage = styled.img`
-  width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-  margin-bottom: 1rem;
-`;
-
 const Description = styled.p`
   font-size: 1rem;
   margin-bottom: 1.5rem;
-`;
-
-const Meta = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
-  color: #555;
-`;
-
-const Section = styled.section`
-  border: 2px solid ${({ theme }) => theme.colors.primary.green900};
-  max-width: 80%;
-  margin: 0 auto 1rem auto;
-  padding: 1rem;
-  padding-left: 0;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-evenly;
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
 `;
 
 const Tags = styled.div`
@@ -115,11 +81,6 @@ const Tag = styled.span`
   margin-right: 0.5rem;
   font-size: 0.85rem;
 `;
-
-const TopSection = styled.div`
-  display: flex;
-
-`
 
 const ImageContainer = styled.div`
   max-width: 50%;

@@ -1,7 +1,6 @@
 import { JSX } from "react";
 import { Recipe } from "../../pages/RecipePage";
-import styled from "styled-components";
-import { RecipeListItem, RecipeLargeSection, RecipeSectionHeader } from "./RecipePage.styles";
+import { RecipeListContainer, RecipeListItem, RecipeSection, RecipeSectionHeader } from "./RecipePage.styles";
 
 interface InstructionCardProps {
   instructions: Recipe['instructions']
@@ -9,15 +8,15 @@ interface InstructionCardProps {
 
 export function InstructionCard({instructions}: InstructionCardProps): JSX.Element {
   return (
-    <RecipeLargeSection key='instructions'>
+    <RecipeSection key='instructions'>
       <RecipeSectionHeader>Instructions</RecipeSectionHeader>
-      <div>
+      <RecipeListContainer>
         <ol>
           {instructions.map((instruction, i) => (
             <RecipeListItem key={i}>{instruction}</RecipeListItem>
           ))}
         </ol>
-      </div>
-    </RecipeLargeSection>
+      </RecipeListContainer>
+    </RecipeSection>
   )
 }
