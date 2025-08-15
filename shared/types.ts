@@ -1,7 +1,7 @@
 export interface Recipe {
   id?: number;
   servings: number,
-  image: string;
+  image?: string;
   title: string;
   description?: string;
   effortLevel: 1 | 2 | 3 | 4 | 5;
@@ -10,20 +10,22 @@ export interface Recipe {
 }
 
 export interface Ingredient {
-  id: number;
+  id?: number;
   name: string;
 }
 
 export interface RecipeIngredients {
-  id: number;
-  recipeId: number;
-  ingredientId: number;
-  quantity: string;
+  id?: number;
+  recipeId?: number;
+  ingredientId?: number;
+  quantity: number;
+  unit?: string;
+  display: string;
 }
 
-export interface Instructions {
-  id: number;
-  recipeId: number;
+export interface Instruction {
+  id?: number;
+  recipeId?: number;
   stepNumber: number;
   instruction: string;
 }
