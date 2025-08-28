@@ -28,7 +28,7 @@ export function Footer(): JSX.Element {
         <h4 className="font-semibold text-white mb-4">Quick Links</h4>
         <ul className="space-y-2">
           <li>
-            <a href="#" className="hover:text-orange-500 transition-colors">
+            <a href="/recipes" className="hover:text-orange-500 transition-colors">
               All Recipes
             </a>
           </li>
@@ -113,4 +113,7 @@ export function Footer(): JSX.Element {
 
 const FooterContainer = styled.footer`
   display: flex;
+  background-color: ${({ theme }) => theme.colors.primary.green200};
+  padding: 1rem;
+  margin-top: 1rem;
 `;

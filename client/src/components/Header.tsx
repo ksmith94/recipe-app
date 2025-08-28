@@ -7,19 +7,21 @@ import { Button } from './Button';
 export function Header(): JSX.Element {
   return (
     <HeaderContainer className="bg-white shadow-sm border-b">
-      <div className="flex items-center space-x-2">
+      <LinkContainer>
         <Link to={'/'}>
-          <ChefHat className="h-8 w-8 text-orange-500" />
-          <h1 className="text-2xl font-bold text-gray-900">FlavorHub</h1>
+          <TitleContainer>
+            <ChefHat size={48}/>
+            <Title>FlavorHub</Title>
+          </TitleContainer>
         </Link>
-      </div>
+      </LinkContainer>
 
-      <Navigation className="hidden md:flex items-center space-x-8">
+      <Navigation>
         <a
-          href="#"
+          href="/recipes"
           className="text-gray-700 hover:text-orange-500 transition-colors"
         >
-          Recipes
+          All Recipes
         </a>
         <a
           href="/create-recipe"
@@ -31,44 +33,66 @@ export function Header(): JSX.Element {
           href="#"
           className="text-gray-700 hover:text-orange-500 transition-colors"
         >
-          Meal Plans
+          Categories
         </a>
-        <a
+        {/* <a
           href="#"
           className="text-gray-700 hover:text-orange-500 transition-colors"
         >
           About
-        </a>
+        </a> */}
       </Navigation>
 
       <ButtonContainer>
-        <Button icon={Heart} iconPosition="left" />
-        <Button icon={User} iconPosition="left" />
-        <Button text="Sign In" />
+        {/* <Button icon={Heart} iconPosition="left" />
+        <Button icon={User} iconPosition="left" /> */}
+        <Button primary={false} text="Sign In" />
       </ButtonContainer>
     </HeaderContainer>
   );
 }
 
 const HeaderContainer = styled.header`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: 0;
+  background-color: ${({ theme }) => theme.colors.primary.green500};
+  padding: 1rem 2rem;
   margin: 0;
   width: 100%;
   position: relative;
   left: 0;
   top: 0;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Navigation = styled.nav`
   display: flex;
-  justify-content: space-evenly;
-  width: 75%;
-  margin: 1rem auto;
+  width: 50%;
+  justify-content: space-around;
+  margin: auto;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  padding: 1rem;
 `;
+
+const LinkContainer = styled.div`
+  display: flex;
+  width: fit-content;
+  justify-content: space-around;
+  margin: auto 0;
+`
+
+const Title = styled.h1`
+  margin: 0;
+  padding-top: 0.5rem;
+`
+
+const TitleContainer = styled.div`
+  display: flex;
+  width: fit-content;
+  margin: 0;
+`
