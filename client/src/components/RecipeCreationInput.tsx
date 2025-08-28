@@ -12,6 +12,7 @@ interface RecipeCreationInputProps {
   step?: number;
   required: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: boolean;
 }
 
 export function RecipeCreationInput({
@@ -24,13 +25,14 @@ export function RecipeCreationInput({
   max = 5,
   step = 1,
   value,
-  onChange
+  onChange,
+  error
 }: RecipeCreationInputProps): JSX.Element {
   return (
-    <Container>
+    <div>
+      <InputContainer $error={error}>
       <label htmlFor={id}>{`${label}: `}</label>
-      <InputContainer>
-        <input
+        <DetailInput
           type={inputType}
           value={value}
           id={id}
@@ -40,6 +42,7 @@ export function RecipeCreationInput({
           placeholder={placeholder}
           required={required}
           onChange={onChange}
+          $error={error}
         />
         {inputType === 'range' && min !== undefined && max !== undefined && (
           <RangeLabels className="flex justify-between text-sm text-gray-500 mt-1">
@@ -49,14 +52,9 @@ export function RecipeCreationInput({
           </RangeLabels>
         )}
       </InputContainer>
-    </Container>
+    </div>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
 
 const RangeLabels = styled.div`
   display: flex;
@@ -68,9 +66,15 @@ const RangeLabels = styled.div`
   margin: 0 auto;
 `;
 
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+const DetailInput = styled.input<{$error?: boolean}>`
+  border: ${({ $error }) => $error && '2px solid red' };
+  border-radius: ${({ $error }) => $error && '4px'};
+`
 
-// const StyledInput = styled.input``;
+const InputContainer = styled.div<{$error?: boolean}>`
+  display: flex;
+  justify-content: space-between;
+  color: ${({ theme, $error }) => $error && theme.colors.error.red500};
+  max-width: 70%;
+  margin: 0 auto;
+`;

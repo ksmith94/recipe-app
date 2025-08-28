@@ -15,9 +15,10 @@ export interface RecipeCreationDetails {
 interface RecipeDetailProps {
   details: RecipeCreationDetails;
   setDetails: (details: RecipeCreationDetails) => void;
+  errors: {[key: string]: boolean}
 }
 
-export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.Element {
+export function RecipeDetailForm({details, setDetails, errors}: RecipeDetailProps): JSX.Element {
 
   function handleChange(id: keyof RecipeCreationDetails, value: string | number) {
     setDetails({...details, [id]: value})
@@ -39,12 +40,14 @@ export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.
   return (
     <FormContainer>
       <form>
+        <h3>Recipe Details</h3>
         <RecipeCreationInput
           inputType="text"
           label="Recipe Title"
           id="title"
           required={true}
           onChange={(e) => handleChange('title', e.target.value)}
+          error={errors.title}
         />
         <br />
         <RecipeCreationInput
@@ -57,10 +60,19 @@ export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.
         <br />
         <RecipeCreationInput
           inputType="text"
+          label="Image URL"
+          id="image"
+          required={false}
+          onChange={(e) => handleChange('image', e.target.value)}
+        />
+        <br />
+        <RecipeCreationInput
+          inputType="text"
           label="Servings"
           id="servings"
           required={true}
           onChange={(e) => handleChange('servings', e.target.value)}
+          error={errors.servings}
         />
         <br />
         <RecipeCreationInput
@@ -69,6 +81,7 @@ export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.
           id="prep-time"
           required={true}
           onChange={(e) => handleChange('prepTime', e.target.value)}
+          error={errors.prepTime}
         />
         <br />
         <RecipeCreationInput
@@ -77,6 +90,7 @@ export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.
           id="cook-time"
           required={true}
           onChange={(e) => handleChange('cookTime', e.target.value)}
+          error={errors.cookTime}
         />
         <br />
         <p>{`Total Time: ${getTotalTime()}`}</p>
@@ -90,6 +104,7 @@ export function RecipeDetailForm({details, setDetails}: RecipeDetailProps): JSX.
           step={1}
           required={true}
           onChange={(e) => handleChange('effortLevel', e.target.value)}
+          error={errors.effortLevel}
         />
       </form>
     </FormContainer>
