@@ -1,5 +1,6 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
+import { Button } from './Button';
 
 interface InstructionFormProps {
   instructions: string[];
@@ -26,8 +27,8 @@ export function RecipeInstructionForm({
   };
 
   return (
-    <div>
-      <h2>Instructions</h2>
+    <InstructionsContainer>
+      <h3>Instructions</h3>
       {instructions.map((instruction, index) => (
         <InstructionRow key={index}>
           <input
@@ -36,17 +37,17 @@ export function RecipeInstructionForm({
             placeholder={`Step ${index + 1}`}
             onChange={(e) => handleChange(index, e.target.value)}
           />
-          {instructions.length > 1 && (
-            <button type="button" onClick={() => removeIngredient(index)}>
+          {(instructions.length > 1 && index === instructions.length - 1) && (
+            <Button primary={false} type="button" onClick={() => removeIngredient(index)}>
               Remove
-            </button>
+            </Button>
           )}
         </InstructionRow>
       ))}
-      <button type="button" onClick={addInstruction}>
+      <Button primary={false} type="button" onClick={addInstruction}>
         Add Step
-      </button>
-    </div>
+      </Button>
+    </InstructionsContainer>
   );
 }
 
@@ -59,11 +60,12 @@ const InstructionRow = styled.div`
     flex: 1;
     padding: 0.5rem;
   }
-
-  button {
-    background: #eee;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
 `;
+
+const InstructionsContainer = styled.div`
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background-color: ${({ theme }) => theme.colors.primary.green100};
+  border-radius: 6px;
+`

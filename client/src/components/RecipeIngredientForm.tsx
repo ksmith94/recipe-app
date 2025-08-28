@@ -1,5 +1,6 @@
 import { JSX } from 'react';
 import styled from 'styled-components';
+import { Button } from './Button';
 
 interface IngredientFormProps {
   ingredients: IngredientInput[];
@@ -63,8 +64,8 @@ export function RecipeIngredientForm({
   }
 
   return (
-    <div>
-      <h2>Ingredients</h2>
+    <IngredientContainer>
+      <h3>Ingredients</h3>
       {ingredients.map((ingredient, index) => (
         <IngredientRow key={index}>
           <input
@@ -116,16 +117,16 @@ export function RecipeIngredientForm({
             onChange={(e) => handleChange(index, e.target.value, 'display')}
           />
           {ingredients.length > 1 && (
-            <button type="button" onClick={() => removeIngredient(index)}>
+            <Button primary={false} onClick={() => removeIngredient(index)}>
               Remove
-            </button>
+            </Button>
           )}
         </IngredientRow>
       ))}
-      <button type="button" onClick={addIngredient}>
+      <Button primary={false} onClick={addIngredient}>
         Add Ingredient
-      </button>
-    </div>
+      </Button>
+    </IngredientContainer>
   );
 }
 
@@ -139,11 +140,12 @@ const IngredientRow = styled.div`
     flex: 1;
     padding: 0.5rem;
   }
-
-  button {
-    background: #eee;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
 `;
+
+const IngredientContainer = styled.div`
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background-color: ${({ theme }) => theme.colors.primary.green100};
+  border-radius: 6px;
+`
