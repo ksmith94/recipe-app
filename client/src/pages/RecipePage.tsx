@@ -6,6 +6,7 @@ import { RecipeDetailCard } from '../components/RecipePage/RecipeDetailCard';
 import { useParams } from 'react-router-dom';
 
 export type Recipe = {
+  id?: string;
   title: string;
   imageUrl: string;
   description: string;

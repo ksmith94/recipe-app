@@ -1,22 +1,57 @@
 import { JSX } from "react";
 import { Recipe } from "../../pages/RecipePage";
 import { DetailCard } from "./RecipePage.styles";
+import styled from "styled-components";
 
 interface RecipeDetailProps {
-  servings: Recipe['servings']
-  cookTime: Recipe['cookTime'];
-  prepTime: Recipe['prepTime'];
-  effort: Recipe['effort']
+  recipe: Recipe;
 }
 
-export function RecipeDetailCard(props: RecipeDetailProps): JSX.Element {
+export function RecipeDetailCard({recipe}: RecipeDetailProps): JSX.Element {
+  const {
+    title,
+    servings,
+    imageUrl,
+    description,
+    effortLevel,
+    prepTime,
+    cookTime,
+  } = recipe;
   return (
       <DetailCard>
-        <div>Servings: {props.servings}</div>
-        <div>Total Time: {props.prepTime + props.cookTime}</div>
-        <div>Effort Level: {props.effort}/5</div>
+        <div>
+        <h2>{title}</h2>
+        <div>
+          <p>{description}</p>  
+        </div>
+        <Details>
+          <Detail>Servings: {servings}</Detail>
+          <Detail>Total Time: {prepTime + cookTime}</Detail>
+          <Detail>Effort: {effortLevel}/5</Detail>
+        </Details>
+        </div>
+        <ImageContainer>
+          <Image src={imageUrl} />
+        </ImageContainer>
       </DetailCard>
   )
 }
 
+const Details = styled.div`
+  display: flex;
+  justify-content: start;
+`
 
+const Detail = styled.p`
+  padding: 0 2rem 0 0;
+  margin-top: 0;
+`
+
+const ImageContainer = styled.div`
+  max-width: 50%;
+  margin: 0 auto 1rem auto;
+`
+
+const Image = styled.img`
+  max-width: 100%;
+`

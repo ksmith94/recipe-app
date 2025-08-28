@@ -13,7 +13,7 @@ export function InstructionCard({instructions}: InstructionCardProps): JSX.Eleme
       <RecipeListContainer>
         <ol>
           {instructions.map((instruction, i) => (
-            <RecipeListItem key={i}>{instruction}</RecipeListItem>
+            <RecipeListItem key={i}>{instruction.instruction}</RecipeListItem>
           ))}
         </ol>
       </RecipeListContainer>

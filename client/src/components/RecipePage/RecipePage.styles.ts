@@ -38,7 +38,5 @@ export const InstructionCardContainer = styled.div`
 export const DetailCard = styled.div`
   text-align: left;
   padding-left: 1rem;
-  display: flex;
-  justify-content: space-around;
   margin-bottom: 2rem;
 `
