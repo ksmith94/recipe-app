@@ -1,52 +1,87 @@
-import { JSX } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { IngredientCard } from '../components/RecipePage/IngredientCard';
 import { InstructionCard } from '../components/RecipePage/InstructionCard';
 import { RecipeDetailCard } from '../components/RecipePage/RecipeDetailCard';
+import { useParams } from 'react-router-dom';
 
 export type Recipe = {
   title: string;
-  image: string;
+  imageUrl: string;
   description: string;
-  effort: number;
+  effortLevel: number;
   servings: number;
   prepTime: number;
   cookTime: number;
   ingredients: string[];
-  instructions: string[];
+  instructions: Instruction[];
   tags: string[];
 };
 
-interface RecipePageProps {
-  recipe: Recipe;
+type Instruction = {
+  stepNumber: number;
+  instruction: string;
 }
 
-export function RecipePage({ recipe }: RecipePageProps): JSX.Element {
-  const totalTime = recipe.prepTime + recipe.cookTime;
+export function RecipePage(): JSX.Element {
+  const { id } = useParams();
+  if (!id) {
+    return (<div>
+      <p>Invalid ID</p>
+    </div>)
+  }
+
+  const [recipe, setRecipe] = useState<Recipe>();
+  const getRecipe = async (id: string) => {
+    try {
+      const response = await fetch(`/api/recipes/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const recipe = await response.json();
+      setRecipe(recipe);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+
+
+  useEffect(() => {
+    getRecipe(id);
+  }, [id])
+
+  if (!recipe) {
+    return (
+      <div>
+        <p>Loading</p>
+      </div>
+    )
+  }
 
   return (
     <Container>
-      <Title>{recipe.title}</Title>
-      <ImageContainer>
-        <Image src={recipe.image} />
-      </ImageContainer>
-      <Description>{recipe.description}</Description>
-      <RecipeDetailCard 
-        servings={recipe.servings}
-        prepTime={recipe.prepTime}
-        cookTime={recipe.cookTime}
-        effort={recipe.effort}
-      />
+      <RecipeDetailCard recipe={recipe}/>
       <div>
         <IngredientCard ingredients={recipe.ingredients} />
         <InstructionCard instructions={recipe.instructions} />
       </div>
 
+      {
+        recipe.tags && 
       <Tags>
         {recipe.tags.map((tag, index) => (
           <Tag key={index}>#{tag}</Tag>
         ))}
       </Tags>
+      }
     </Container>
   );
 }
