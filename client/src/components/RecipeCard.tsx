@@ -1,48 +1,41 @@
 import { JSX } from 'react';
-import { Recipe } from '../../../shared/types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Clock, Users } from 'lucide-react';
+import { Recipe } from '../pages/RecipePage';
 
 interface RecipeCardProps {
   recipe: Recipe;
 }
 
 export function RecipeCard({ recipe }: RecipeCardProps): JSX.Element {
-  const { title, cookTime, prepTime, description, effortLevel } = recipe;
+  const { id, title, cookTime, prepTime, servings, effortLevel, imageUrl } = recipe;
 
   return (
-    <Link to={'/recipe'}>
+    <Link to={`/recipe/${id}`}>
       <Card>
         <div className="relative">
           <div className="w-full h-48 bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
-            <div className="text-gray-400 text-center">
-              <div className="text-4xl mb-2">🍽️</div>
+              <ImageContainer>
+                <Image src={imageUrl} />
+              </ImageContainer>
               <h3>{title}</h3>
-              <div className="text-sm">{description}</div>
-            </div>
-          </div>
-          <button className="absolute top-2 right-2 bg-white/80 hover:bg-white">
-            {/* <Heart className="h-4 w-4" /> */}
-          </button>
-          <div className="absolute top-2 left-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-            {effortLevel}
           </div>
         </div>
 
         <div className="p-4">
-          {/* <h3 className="font-semibold text-lg mb-2 group-hover:text-orange-500 transition-colors">
-            {title}
-          </h3> */}
-
-          <div className="flex items-center justify-between text-sm text-gray-600 mb-3">
-            <div className="flex items-center space-x-1">
-              {/* <Clock className="h-4 w-4" /> */}
+          <DetailRow className="flex items-center justify-between text-sm text-gray-600 mb-3">
+            <Detail className="flex items-center space-x-1">
+              <Clock size={16} className="h-4 w-4" />
               <span>{cookTime + prepTime}</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              {/* <Users className="h-4 w-4" /> */}
-            </div>
-          </div>
+            </Detail>
+            <Detail>
+              <span>Servings: {servings}</span>
+            </Detail>
+            <Detail>
+              <span>Effort: {effortLevel} / 5</span>
+            </Detail>
+          </DetailRow>
 
           <div className="flex items-center justify-between">
             <div className="flex text-yellow-400">
@@ -55,7 +48,6 @@ export function RecipeCard({ recipe }: RecipeCardProps): JSX.Element {
                 </span>
               ))}
             </div>
-            <span className="text-sm text-gray-600">{effortLevel}.0</span>
           </div>
         </div>
       </Card>
@@ -70,5 +62,27 @@ const Card = styled.div`
   padding: 1.5rem;
   margin: 1rem;
   width: 300px;
+  height: 300px;
   border: 2px solid ${({ theme }) => theme.colors.primary.green900};
 `;
+
+const ImageContainer = styled.div`
+  max-width: 75%;
+  max-height: 50%;
+  margin: 0 auto;
+`
+
+const Image = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+`
+
+const DetailRow = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
+
+const Detail = styled.div`
+  margin: 2px 0;
+`
