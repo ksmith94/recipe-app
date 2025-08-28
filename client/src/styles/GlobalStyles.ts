@@ -3,6 +3,9 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   :root {
     font-size: ${({ theme }) => theme.fontSizes.base};
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   *, *::before, *::after {
