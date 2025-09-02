@@ -6,10 +6,8 @@ import json from '@eslint/json';
 import css from '@eslint/css';
 import { defineConfig } from 'eslint/config';
 import pluginPrettier from 'eslint-plugin-prettier';
-import prettierConfig from 'eslingt-config-prettier';
 
 export default defineConfig([
-  // ✅ JavaScript & TypeScript support
   {
     files: [
       'api/**/*.{ts,js}',
@@ -36,16 +34,11 @@ export default defineConfig([
     rules: {
       ...tseslint.config.recommended.rules,
       'prettier/prettier': 'error',
-      ...prettierConfig.rules,
     },
   },
-
-  // ✅ React config
   {
     files: ['client/**/*.{jsx,tsx}'],
-    plugins: {
-      react: pluginReact,
-    },
+    plugins: { react: pluginReact },
     settings: {
       react: {
         version: 'detect',
@@ -56,8 +49,6 @@ export default defineConfig([
       'react/react-in-jsx-scope': 'off',
     },
   },
-
-  // ✅ JSON files
   {
     files: ['**/*.json'],
     ignores: ['tsconfig.json'],
@@ -67,8 +58,6 @@ export default defineConfig([
       ...json.configs.recommended.rules,
     },
   },
-
-  // ✅ CSS files
   {
     files: ['**/*.css'],
     plugins: { css },
@@ -76,8 +65,5 @@ export default defineConfig([
     rules: {
       ...css.configs.recommended.rules,
     },
-  },
-  {
-    extends: ['prettier'],
   },
 ]);
