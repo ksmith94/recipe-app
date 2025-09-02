@@ -1,6 +1,6 @@
 import { JSX, useEffect, useState } from "react";
 import { RecipeCard } from "../components/RecipeCard";
-import { Recipe } from "../../../shared/types";
+import { Recipe } from "./RecipePage";
 import styled from "styled-components";
 
 export function RecipesPage(): JSX.Element {
