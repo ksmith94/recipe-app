@@ -1,14 +1,21 @@
-import { JSX } from "react";
-import { Recipe } from "../../pages/RecipePage";
-import { RecipeListContainer, RecipeListItem, RecipeSection, RecipeSectionHeader } from "./RecipePage.styles";
+import { JSX } from 'react';
+import { Recipe } from '../../pages/RecipePage';
+import {
+  RecipeListContainer,
+  RecipeListItem,
+  RecipeSection,
+  RecipeSectionHeader,
+} from './RecipePage.styles';
 
 interface IngredientCardProps {
   ingredients: Recipe['ingredients'];
 }
 
-export function IngredientCard({ ingredients }: IngredientCardProps): JSX.Element {
+export function IngredientCard({
+  ingredients,
+}: IngredientCardProps): JSX.Element {
   return (
-    <RecipeSection key='ingredients'>
+    <RecipeSection key="ingredients">
       <RecipeSectionHeader>Ingredients</RecipeSectionHeader>
       <RecipeListContainer>
         <ul>
@@ -18,5 +25,5 @@ export function IngredientCard({ ingredients }: IngredientCardProps): JSX.Elemen
         </ul>
       </RecipeListContainer>
     </RecipeSection>
-  )
+  );
 }

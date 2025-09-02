@@ -19,11 +19,11 @@ export function RecipeIngredientForm({
   setIngredients,
 }: IngredientFormProps): JSX.Element {
   const handleChange = (
-    index: number, 
-    value: string | number, 
+    index: number,
+    value: string | number,
     field: 'ingredient' | 'quantity' | 'unit' | 'display'
   ) => {
-    const updatedIngredients: IngredientInput[] = [...ingredients]
+    const updatedIngredients: IngredientInput[] = [...ingredients];
     switch (field) {
       case 'ingredient':
         updatedIngredients[index].name = value as string;
@@ -43,7 +43,10 @@ export function RecipeIngredientForm({
   };
 
   const addIngredient = () => {
-    setIngredients([...ingredients, {name: '', quantity: 0, unit: '', display: ''}]);
+    setIngredients([
+      ...ingredients,
+      { name: '', quantity: 0, unit: '', display: '' },
+    ]);
   };
 
   const removeIngredient = (index: number) => {
@@ -51,7 +54,11 @@ export function RecipeIngredientForm({
     setIngredients(updated);
   };
 
-  const generateDisplay = (quantity: number, ingredient: string, unit?: string): string => {
+  const generateDisplay = (
+    quantity: number,
+    ingredient: string,
+    unit?: string
+  ): string => {
     const q = quantity?.toString().trim();
     const u = unit?.trim();
     const n = ingredient?.trim();
@@ -61,7 +68,7 @@ export function RecipeIngredientForm({
     console.log(parts);
 
     return parts.join(' ');
-  }
+  };
 
   return (
     <IngredientContainer>
@@ -78,11 +85,11 @@ export function RecipeIngredientForm({
                 ingredient.quantity,
                 ingredient.name,
                 ingredient.unit
-              )
-              handleChange(index, display, 'display')
+              );
+              handleChange(index, display, 'display');
             }}
           />
-          <input 
+          <input
             type="number"
             placeholder="Quantity"
             value={ingredient.quantity}
@@ -92,11 +99,11 @@ export function RecipeIngredientForm({
                 ingredient.quantity,
                 ingredient.name,
                 ingredient.unit
-              )
-              handleChange(index, display, 'display')
+              );
+              handleChange(index, display, 'display');
             }}
           />
-          <input 
+          <input
             type="text"
             placeholder="Unit"
             value={ingredient.unit}
@@ -106,11 +113,11 @@ export function RecipeIngredientForm({
                 ingredient.quantity,
                 ingredient.name,
                 ingredient.unit
-              )
-              handleChange(index, display, 'display')
+              );
+              handleChange(index, display, 'display');
             }}
           />
-          <input 
+          <input
             type="text"
             placeholder="Display"
             value={ingredient.display}
@@ -148,4 +155,4 @@ const IngredientContainer = styled.div`
   padding: 1rem 2rem;
   background-color: ${({ theme }) => theme.colors.primary.green100};
   border-radius: 6px;
-`
+`;

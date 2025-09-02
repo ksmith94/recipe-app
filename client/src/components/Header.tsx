@@ -1,4 +1,4 @@
-import { ChefHat, Heart, User } from 'lucide-react';
+import { ChefHat } from 'lucide-react';
 import { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ export function Header(): JSX.Element {
       <LinkContainer>
         <Link to={'/'}>
           <TitleContainer>
-            <ChefHat size={48}/>
+            <ChefHat size={48} />
             <Title>FlavorHub</Title>
           </TitleContainer>
         </Link>
@@ -84,15 +84,15 @@ const LinkContainer = styled.div`
   width: fit-content;
   justify-content: space-around;
   margin: auto 0;
-`
+`;
 
 const Title = styled.h1`
   margin: 0;
   padding-top: 0.5rem;
-`
+`;
 
 const TitleContainer = styled.div`
   display: flex;
   width: fit-content;
   margin: 0;
-`
+`;

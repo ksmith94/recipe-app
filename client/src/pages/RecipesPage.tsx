@@ -1,7 +1,7 @@
-import { JSX, useEffect, useState } from "react";
-import { RecipeCard } from "../components/RecipeCard";
-import { Recipe } from "./RecipePage";
-import styled from "styled-components";
+import { JSX, useEffect, useState } from 'react';
+import { RecipeCard } from '../components/RecipeCard';
+import { Recipe } from './RecipePage';
+import styled from 'styled-components';
 
 export function RecipesPage(): JSX.Element {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -11,12 +11,12 @@ export function RecipesPage(): JSX.Element {
       const response = await fetch('/api/recipes', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          'Content-Type': 'application/json',
+        },
+      });
 
       if (!response.ok) {
-        throw new Error(`Error: ${response.status}`)
+        throw new Error(`Error: ${response.status}`);
       }
 
       const recipes = await response.json();
@@ -24,12 +24,11 @@ export function RecipesPage(): JSX.Element {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
     fetchRecipes();
   }, []);
-
 
   return (
     <div>
@@ -40,11 +39,11 @@ export function RecipesPage(): JSX.Element {
         ))}
       </RecipesDisplay>
     </div>
-  )
+  );
 }
 
 const RecipesDisplay = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`
+`;

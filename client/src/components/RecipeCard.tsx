@@ -1,7 +1,7 @@
+import { Clock } from 'lucide-react';
 import { JSX } from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Clock, Users } from 'lucide-react';
+import styled from 'styled-components';
 import { Recipe } from '../pages/RecipePage';
 
 interface RecipeCardProps {
@@ -9,17 +9,18 @@ interface RecipeCardProps {
 }
 
 export function RecipeCard({ recipe }: RecipeCardProps): JSX.Element {
-  const { id, title, cookTime, prepTime, servings, effortLevel, imageUrl } = recipe;
+  const { id, title, cookTime, prepTime, servings, effortLevel, imageUrl } =
+    recipe;
 
   return (
     <Link to={`/recipe/${id}`}>
       <Card>
         <div className="relative">
           <div className="w-full h-48 bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
-              <ImageContainer>
-                <Image src={imageUrl} />
-              </ImageContainer>
-              <h3>{title}</h3>
+            <ImageContainer>
+              <Image src={imageUrl} />
+            </ImageContainer>
+            <h3>{title}</h3>
           </div>
         </div>
 
@@ -70,19 +71,19 @@ const ImageContainer = styled.div`
   max-width: 75%;
   max-height: 50%;
   margin: 0 auto;
-`
+`;
 
 const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
   margin: auto;
-`
+`;
 
 const DetailRow = styled.div`
   display: flex;
   justify-content: space-evenly;
-`
+`;
 
 const Detail = styled.div`
   margin: 2px 0;
-`
+`;

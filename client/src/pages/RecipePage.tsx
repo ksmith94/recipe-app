@@ -22,14 +22,16 @@ export type Recipe = {
 type Instruction = {
   stepNumber: number;
   instruction: string;
-}
+};
 
 export function RecipePage(): JSX.Element {
   const { id } = useParams();
   if (!id) {
-    return (<div>
-      <p>Invalid ID</p>
-    </div>)
+    return (
+      <div>
+        <p>Invalid ID</p>
+      </div>
+    );
   }
 
   const [recipe, setRecipe] = useState<Recipe>();
@@ -38,8 +40,8 @@ export function RecipePage(): JSX.Element {
       const response = await fetch(`/api/recipes/${id}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
 
       if (!response.ok) {
@@ -51,38 +53,35 @@ export function RecipePage(): JSX.Element {
     } catch (err) {
       console.error(err);
     }
-  }
-
-
+  };
 
   useEffect(() => {
     getRecipe(id);
-  }, [id])
+  }, [id]);
 
   if (!recipe) {
     return (
       <div>
         <p>Loading</p>
       </div>
-    )
+    );
   }
 
   return (
     <Container>
-      <RecipeDetailCard recipe={recipe}/>
+      <RecipeDetailCard recipe={recipe} />
       <div>
         <IngredientCard ingredients={recipe.ingredients} />
         <InstructionCard instructions={recipe.instructions} />
       </div>
 
-      {
-        recipe.tags && 
-      <Tags>
-        {recipe.tags.map((tag, index) => (
-          <Tag key={index}>#{tag}</Tag>
-        ))}
-      </Tags>
-      }
+      {recipe.tags && (
+        <Tags>
+          {recipe.tags.map((tag, index) => (
+            <Tag key={index}>#{tag}</Tag>
+          ))}
+        </Tags>
+      )}
     </Container>
   );
 }
@@ -121,8 +120,8 @@ const Tag = styled.span`
 const ImageContainer = styled.div`
   max-width: 50%;
   margin: 0 auto 1rem auto;
-`
+`;
 
 const Image = styled.img`
   max-width: 100%;
-`
+`;

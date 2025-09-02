@@ -1,14 +1,21 @@
-import { JSX } from "react";
-import { Recipe } from "../../pages/RecipePage";
-import { RecipeListContainer, RecipeListItem, RecipeSection, RecipeSectionHeader } from "./RecipePage.styles";
+import { JSX } from 'react';
+import { Recipe } from '../../pages/RecipePage';
+import {
+  RecipeListContainer,
+  RecipeListItem,
+  RecipeSection,
+  RecipeSectionHeader,
+} from './RecipePage.styles';
 
 interface InstructionCardProps {
-  instructions: Recipe['instructions']
+  instructions: Recipe['instructions'];
 }
 
-export function InstructionCard({instructions}: InstructionCardProps): JSX.Element {
+export function InstructionCard({
+  instructions,
+}: InstructionCardProps): JSX.Element {
   return (
-    <RecipeSection key='instructions'>
+    <RecipeSection key="instructions">
       <RecipeSectionHeader>Instructions</RecipeSectionHeader>
       <RecipeListContainer>
         <ol>
@@ -18,5 +25,5 @@ export function InstructionCard({instructions}: InstructionCardProps): JSX.Eleme
         </ol>
       </RecipeListContainer>
     </RecipeSection>
-  )
+  );
 }

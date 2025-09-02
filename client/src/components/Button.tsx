@@ -10,7 +10,14 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function Button(props: ButtonProps): JSX.Element {
-  const { icon: Icon, iconPosition = 'left', text, children, primary, ...rest } = props;
+  const {
+    icon: Icon,
+    iconPosition = 'left',
+    text,
+    children,
+    primary,
+    ...rest
+  } = props;
   return (
     <ButtonContainer $primary={primary} {...rest}>
       {Icon && iconPosition === 'left' && <Icon />}
@@ -21,7 +28,7 @@ export function Button(props: ButtonProps): JSX.Element {
   );
 }
 
-const ButtonContainer = styled.button<{$primary?: boolean}>`
+const ButtonContainer = styled.button<{ $primary?: boolean }>`
   width: fit-content;
   display: inline-flex;
   align-items: center;
@@ -34,21 +41,16 @@ const ButtonContainer = styled.button<{$primary?: boolean}>`
   color: white;
   border-radius: 6px;
   cursor: pointer;
-  background-color: ${({ theme, $primary }) => $primary ?
-    theme.colors.primary.green500 :  
-    theme.colors.primary.green100
-  };
-  color: ${({ $primary, theme }) => $primary ? 
-    theme.colors.white :
-    theme.colors.primary.green900
-  };
-  border: ${({ $primary, theme }) => $primary ? 'none' : `2px solid ${theme.colors.primary.green900}`};
+  background-color: ${({ theme, $primary }) =>
+    $primary ? theme.colors.primary.green500 : theme.colors.primary.green100};
+  color: ${({ $primary, theme }) =>
+    $primary ? theme.colors.white : theme.colors.primary.green900};
+  border: ${({ $primary, theme }) =>
+    $primary ? 'none' : `2px solid ${theme.colors.primary.green900}`};
 
   &:hover {
-    background-color: ${({ theme, $primary }) => $primary ? 
-      theme.colors.primary.green700 :
-      theme.colors.primary.green200
-    };
+    background-color: ${({ theme, $primary }) =>
+      $primary ? theme.colors.primary.green700 : theme.colors.primary.green200};
   }
 
   svg {

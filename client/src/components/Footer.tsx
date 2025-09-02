@@ -28,7 +28,10 @@ export function Footer(): JSX.Element {
         <h4 className="font-semibold text-white mb-4">Quick Links</h4>
         <ul className="space-y-2">
           <li>
-            <a href="/recipes" className="hover:text-orange-500 transition-colors">
+            <a
+              href="/recipes"
+              className="hover:text-orange-500 transition-colors"
+            >
               All Recipes
             </a>
           </li>

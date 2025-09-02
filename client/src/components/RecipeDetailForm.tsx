@@ -15,18 +15,24 @@ export interface RecipeCreationDetails {
 interface RecipeDetailProps {
   details: RecipeCreationDetails;
   setDetails: (details: RecipeCreationDetails) => void;
-  errors: {[key: string]: boolean}
+  errors: { [key: string]: boolean };
 }
 
-export function RecipeDetailForm({details, setDetails, errors}: RecipeDetailProps): JSX.Element {
-
-  function handleChange(id: keyof RecipeCreationDetails, value: string | number) {
-    setDetails({...details, [id]: value})
+export function RecipeDetailForm({
+  details,
+  setDetails,
+  errors,
+}: RecipeDetailProps): JSX.Element {
+  function handleChange(
+    id: keyof RecipeCreationDetails,
+    value: string | number
+  ) {
+    setDetails({ ...details, [id]: value });
   }
 
   function getTotalTime() {
     if (!details.cookTime && !details.prepTime) {
-      return '––'
+      return '––';
     } else if (!details.prepTime) {
       return details.cookTime + ' minutes';
     } else if (!details.cookTime) {

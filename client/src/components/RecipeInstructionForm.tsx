@@ -37,8 +37,12 @@ export function RecipeInstructionForm({
             placeholder={`Step ${index + 1}`}
             onChange={(e) => handleChange(index, e.target.value)}
           />
-          {(instructions.length > 1 && index === instructions.length - 1) && (
-            <Button primary={false} type="button" onClick={() => removeIngredient(index)}>
+          {instructions.length > 1 && index === instructions.length - 1 && (
+            <Button
+              primary={false}
+              type="button"
+              onClick={() => removeIngredient(index)}
+            >
               Remove
             </Button>
           )}
@@ -68,4 +72,4 @@ const InstructionsContainer = styled.div`
   padding: 1rem 2rem;
   background-color: ${({ theme }) => theme.colors.primary.green100};
   border-radius: 6px;
-`
+`;

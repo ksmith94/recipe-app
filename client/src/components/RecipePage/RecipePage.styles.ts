@@ -1,4 +1,4 @@
-import { styled } from "styled-components"
+import { styled } from 'styled-components';
 
 export const RecipeSection = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.primary.green900};
@@ -8,7 +8,7 @@ export const RecipeSection = styled.div`
   padding: 1rem;
   padding-left: 0;
   border-radius: 8px;
-`
+`;
 
 export const RecipeSectionHeader = styled.h2`
   border: 2px solid ${({ theme }) => theme.colors.primary.green900};
@@ -19,24 +19,24 @@ export const RecipeSectionHeader = styled.h2`
   text-align: left;
   padding: 0.5rem;
   color: ${({ theme }) => theme.colors.primary.green100};
-`
+`;
 
 export const RecipeListContainer = styled.div`
   width: fit-content;
   margin: auto;
-`
+`;
 
 export const RecipeListItem = styled.li`
   text-align: left;
   color: ${({ theme }) => theme.colors.primary.green900};
-`
+`;
 
 export const InstructionCardContainer = styled.div`
   border: 2px solid black;
-`
+`;
 
 export const DetailCard = styled.div`
   text-align: left;
   padding-left: 1rem;
   margin-bottom: 2rem;
-`
+`;
