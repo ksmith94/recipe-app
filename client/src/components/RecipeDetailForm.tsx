@@ -4,7 +4,7 @@ import { RecipeCreationInput } from './RecipeCreationInput';
 
 export interface RecipeCreationDetails {
   title: string;
-  image?: string;
+  imageUrl?: string;
   description: string;
   servings: string;
   prepTime: string;
@@ -69,7 +69,7 @@ export function RecipeDetailForm({
           label="Image URL"
           id="image"
           required={false}
-          onChange={(e) => handleChange('image', e.target.value)}
+          onChange={(e) => handleChange('imageUrl', e.target.value)}
         />
         <br />
         <RecipeCreationInput

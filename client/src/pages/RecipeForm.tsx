@@ -24,7 +24,7 @@ export function CreateRecipePage(): JSX.Element {
   const [instructions, setInstructions] = useState(['']);
   const [details, setDetails] = useState<RecipeCreationDetails>({
     title: '',
-    image: '',
+    imageUrl: '',
     servings: '',
     description: '',
     prepTime: '',
@@ -135,7 +135,7 @@ export function CreateRecipePage(): JSX.Element {
     }
     const recipe = {
       title: details.title,
-      imageUrl: details.image,
+      imageUrl: details.imageUrl,
       servings: parseInt(details.servings),
       description: details.description,
       effortLevel: details.effortLevel,
