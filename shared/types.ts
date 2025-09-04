@@ -1,7 +1,7 @@
 export interface Recipe {
   id?: number;
-  servings: number,
-  image?: string;
+  servings: number;
+  imageUrl?: string;
   title: string;
   description?: string;
   effortLevel: 1 | 2 | 3 | 4 | 5;

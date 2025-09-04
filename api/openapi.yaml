@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Recipe API
+  version: 1.0.0
+paths:
+  api/recipes/{id}:
+    get:
+      summary: Get a recipe detail by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/RecipeDetail' }
+        '400': { description: Invalid id }
+        '404': { description: Not found }
+        '500': { description: Server error }
+components:
+  schemas:
+    Instruction:
+      type: object
+      required: [stepNumber, instruction]
+      properties:
+        stepNumber: { type: integer, minimum: 1 }
+        instruction: { type: string }
+    RecipeDetail:
+      type: object
+      required:
+        [
+          id,
+          title,
+          description,
+          servings,
+          prepTime,
+          cookTime,
+          effortLevel,
+          ingredients,
+          instructions,
+          tags,
+        ]
+      properties:
+        id: { type: string, format: uuid }
+        title: { type: string }
+        imageUrl: { type: [string, 'null'], format: uri }
+        description: { type: string }
+        servings: { type: integer, minimum: 1 }
+        preptime: { type: integer, minimum: 0 }
+        cookTime: { type: integer, minimum: 0 }
+        effortLevel:
+          type: integer
+          enum: [1, 2, 3, 4, 5]
+        ingredients:
+          type: array
+          items: { type: string }
+        instructions:
+          type: array
+          items: { $ref: '#/components/schemas/Instruction' }
+        tags:
+          type: array
+          items: { type: string }
+
+      anyOf:
+        - properties: { prepTime: { minimum: 1 } }
+        - properties: { cookTimeTime: { minimum: 1 } }

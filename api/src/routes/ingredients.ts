@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { Ingredient } from '../../shared/types';
+import { Ingredient } from '../../../shared/types';
 import camelcaseKeys from 'camelcase-keys';
-import db from '../db';
+import db from '../../db';
 
 const router = Router();
 
