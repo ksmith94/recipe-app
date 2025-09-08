@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-import recipeRoutes from './src/routes/recipes';
-import ingredientRoutes from './src/routes/ingredients';
-import instructionRoutes from './src/routes/instructions';
+import recipeRoutes from './routes/recipes.js';
+import ingredientRoutes from './routes/ingredients.js';
+import instructionRoutes from './routes/instructions.js';
 
 dotenv.config();
 

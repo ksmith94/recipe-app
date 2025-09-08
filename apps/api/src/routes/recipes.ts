@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { Instruction, Recipe } from '../../../shared/types';
+import { Recipe } from '@repo/contracts';
 import camelcaseKeys from 'camelcase-keys';
-import db from '../../db';
-import { RecipeDetailDTO } from '../schemas/recipe.dto';
+import db from '../db.js';
+import { RecipeDetailDTO } from '../schemas/recipe.dto.js';
 import z from 'zod';
 
 const router = Router();

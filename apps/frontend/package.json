@@ -1,0 +1,25 @@
+{
+  "name": "@repo/frontend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@repo/client": "*",
+    "@repo/contracts": "*",
+    "lucide-react": "^0.542.0",
+    "next": "14.x",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.8.2",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@types/react-router-dom": "^5.3.3"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "rootDir": "src",
+    "outDir": "dist",
+    "composite": true
+  },
+  "references": [
+    { "path": "../../packages/contracts" },
+    { "path": "../../packages/client" }
+  ],
+  "include": ["src", "next-env.d.ts"]
+}

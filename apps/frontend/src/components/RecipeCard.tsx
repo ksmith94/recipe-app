@@ -2,7 +2,7 @@ import { Clock } from 'lucide-react';
 import { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Recipe } from '../pages/RecipePage';
+import { Recipe } from '../pages/RecipePage.js';
 
 interface RecipeCardProps {
   recipe: Recipe;
