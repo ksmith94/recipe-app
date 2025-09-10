@@ -36,24 +36,32 @@ export function CreateRecipePage(): JSX.Element {
 
   const navigate = useNavigate();
 
-  const handleFormNavigation = () => {
-    if (step === 1) {
-      const invalidDetails = validateDetails(details);
-      if (invalidDetails.length) {
-        console.error('Required field(s) missing: ', invalidDetails.join(', '));
-      } else {
-        setStep(step + 1);
-        setErrorMessage('');
+  const handleFormNavigation = (next: boolean) => {
+    if (next) {
+      if (step === 1) {
+        const invalidDetails = validateDetails(details);
+        if (invalidDetails.length) {
+          console.error(
+            'Required field(s) missing: ',
+            invalidDetails.join(', ')
+          );
+        } else {
+          setStep(step + 1);
+          setErrorMessage('');
+        }
+      } else if (step === 2) {
+        const validatedIngredients = ingredients.filter(
+          (ingredient) => ingredient.name !== ''
+        );
+        if (!validatedIngredients.length) {
+          setErrorMessage('At least 1 ingredient is required.');
+        } else {
+          setStep(step + 1);
+        }
       }
-    } else if (step === 2) {
-      const validatedIngredients = ingredients.filter(
-        (ingredient) => ingredient.name !== ''
-      );
-      if (!validatedIngredients.length) {
-        setErrorMessage('At least 1 ingredient is required.');
-      } else {
-        setStep(step + 1);
-      }
+    } else {
+      setStep(step - 1);
+      setErrorMessage('');
     }
   };
 
@@ -87,7 +95,6 @@ export function CreateRecipePage(): JSX.Element {
   const generateErrorMessage = (errors: {
     [key: string]: boolean;
   }): string | null => {
-    debugger;
     const keys = Object.keys(errors);
     if (!keys.length) return null;
     let message = 'The following required fields are missing: ';
@@ -193,12 +200,12 @@ export function CreateRecipePage(): JSX.Element {
       )}
       <div style={{ marginTop: '1rem' }}>
         {step > 1 && (
-          <Button primary onClick={() => setStep(step - 1)}>
+          <Button primary onClick={() => handleFormNavigation(false)}>
             Back
           </Button>
         )}
         {step < 4 && (
-          <Button primary onClick={() => handleFormNavigation()}>
+          <Button primary onClick={() => handleFormNavigation(true)}>
             Next
           </Button>
         )}

@@ -23,6 +23,7 @@ export function RecipeDetailForm({
   setDetails,
   errors,
 }: RecipeDetailProps): JSX.Element {
+  console.log(details);
   function handleChange(
     id: keyof RecipeCreationDetails,
     value: string | number
@@ -54,6 +55,7 @@ export function RecipeDetailForm({
           required={true}
           onChange={(e) => handleChange('title', e.target.value)}
           error={errors.title}
+          value={details.title}
         />
         <br />
         <RecipeCreationInput
@@ -62,6 +64,7 @@ export function RecipeDetailForm({
           id="description"
           required={false}
           onChange={(e) => handleChange('description', e.target.value)}
+          value={details.description}
         />
         <br />
         <RecipeCreationInput
@@ -70,6 +73,7 @@ export function RecipeDetailForm({
           id="image"
           required={false}
           onChange={(e) => handleChange('imageUrl', e.target.value)}
+          value={details.imageUrl}
         />
         <br />
         <RecipeCreationInput
@@ -79,6 +83,7 @@ export function RecipeDetailForm({
           required={true}
           onChange={(e) => handleChange('servings', e.target.value)}
           error={errors.servings}
+          value={details.servings}
         />
         <br />
         <RecipeCreationInput
@@ -88,6 +93,7 @@ export function RecipeDetailForm({
           required={true}
           onChange={(e) => handleChange('prepTime', e.target.value)}
           error={errors.prepTime}
+          value={details.prepTime}
         />
         <br />
         <RecipeCreationInput
@@ -97,6 +103,7 @@ export function RecipeDetailForm({
           required={true}
           onChange={(e) => handleChange('cookTime', e.target.value)}
           error={errors.cookTime}
+          value={details.cookTime}
         />
         <br />
         <p>{`Total Time: ${getTotalTime()}`}</p>
