@@ -1,14 +1,24 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "rootDir": "src",
     "outDir": "dist",
-    "composite": true
+    "composite": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "noEmit": false,
+    "incremental": true,
+    "isolatedModules": true
   },
   "references": [
-    { "path": "../../packages/contracts" },
-    { "path": "../../packages/client" }
+    {
+      "path": "../../packages/contracts"
+    },
+    {
+      "path": "../../packages/client"
+    }
   ],
-  "include": ["src", "next-env.d.ts"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
