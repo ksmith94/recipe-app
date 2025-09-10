@@ -13,7 +13,7 @@
     "start": "node dist/index.js",
     "dev:api": "npm run dev -w @repo/api",
     "dev:frontend": "npm run dev -w @repo/frontend",
-    "build": "tsc -b",
+    "build": "tsc --build tsconfig.json",
     "clean": "rimraf node_modules **/node_modules **/dist",
     "lint": "eslint .",
     "format": "prettier --write",
