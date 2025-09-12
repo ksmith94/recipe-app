@@ -29,9 +29,9 @@ export function RecipeCreationInput({
   error,
 }: RecipeCreationInputProps): JSX.Element {
   return (
-    <div>
-      <InputContainer $error={error}>
-        <label htmlFor={id}>{`${label}: `}</label>
+    <FieldContainer $error={error}>
+      <label htmlFor={id}>{`${label}: `}</label>
+      <InputContainer>
         <DetailInput
           type={inputType}
           value={value}
@@ -52,7 +52,7 @@ export function RecipeCreationInput({
           </RangeLabels>
         )}
       </InputContainer>
-    </div>
+    </FieldContainer>
   );
 }
 
@@ -69,12 +69,17 @@ const RangeLabels = styled.div`
 const DetailInput = styled.input<{ $error?: boolean }>`
   border: ${({ $error }) => $error && '2px solid red'};
   border-radius: ${({ $error }) => $error && '4px'};
+  width: 100%;
 `;
 
-const InputContainer = styled.div<{ $error?: boolean }>`
+const InputContainer = styled.div`
+  padding: 0 1rem;
+`;
+
+const FieldContainer = styled.div<{ $error?: boolean }>`
   display: flex;
   justify-content: space-between;
   color: ${({ theme, $error }) => $error && theme.colors.error.red500};
-  max-width: 70%;
+  max-width: 100%;
   margin: 0 auto;
 `;

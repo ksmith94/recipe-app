@@ -118,6 +118,7 @@ export function RecipeDetailForm({
           required={true}
           onChange={(e) => handleChange('effortLevel', e.target.value)}
           error={errors.effortLevel}
+          value={3}
         />
       </form>
     </FormContainer>
