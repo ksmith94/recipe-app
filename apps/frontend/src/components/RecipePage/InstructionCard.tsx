@@ -6,6 +6,7 @@ import {
   RecipeSection,
   RecipeSectionHeader,
 } from './RecipePage.styles';
+import styled from 'styled-components';
 
 interface InstructionCardProps {
   instructions: Recipe['instructions'];
@@ -15,15 +16,37 @@ export function InstructionCard({
   instructions,
 }: InstructionCardProps): JSX.Element {
   return (
-    <RecipeSection key="instructions">
+    <InstructionContainer key="instructions">
       <RecipeSectionHeader>Instructions</RecipeSectionHeader>
-      <RecipeListContainer>
+      <InstructionListContainer>
         <ol>
           {instructions.map((instruction, i) => (
-            <RecipeListItem key={i}>{instruction.instruction}</RecipeListItem>
+            <InstructionListItem key={i}>
+              {instruction.instruction}
+            </InstructionListItem>
           ))}
         </ol>
-      </RecipeListContainer>
-    </RecipeSection>
+      </InstructionListContainer>
+    </InstructionContainer>
   );
 }
+
+const InstructionContainer = styled.div`
+  border: 2px solid ${({ theme }) => theme.colors.primary.green900};
+  width: 80%;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  padding-left: 0;
+  border-radius: 8px;
+`;
+
+const InstructionListContainer = styled.div`
+  width: fit-content;
+`;
+
+const InstructionListItem = styled.li`
+  width: fit-content;
+  padding-bottom: 1rem;
+`;

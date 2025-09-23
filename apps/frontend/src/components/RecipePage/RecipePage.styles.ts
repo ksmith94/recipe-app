@@ -3,7 +3,9 @@ import { styled } from 'styled-components';
 export const RecipeSection = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.primary.green900};
   width: fit-content;
+  max-width: 80%;
   margin: auto;
+  margin-top: 0;
   margin-bottom: 2rem;
   padding: 1rem;
   padding-left: 0;
@@ -36,6 +38,8 @@ export const InstructionCardContainer = styled.div`
 `;
 
 export const DetailCard = styled.div`
+  display: flex;
+  justify-content: space-around;
   text-align: left;
   padding-left: 1rem;
   margin-bottom: 2rem;

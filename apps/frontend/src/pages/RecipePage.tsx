@@ -70,10 +70,9 @@ export function RecipePage(): JSX.Element {
   return (
     <Container>
       <RecipeDetailCard recipe={recipe} />
-      <div>
-        <IngredientCard ingredients={recipe.ingredients} />
+      <RecipeCard>
         <InstructionCard instructions={recipe.instructions} />
-      </div>
+      </RecipeCard>
 
       {recipe.tags && (
         <Tags>
@@ -85,6 +84,11 @@ export function RecipePage(): JSX.Element {
     </Container>
   );
 }
+
+const RecipeCard = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 const Container = styled.div`
   max-width: 95%;
