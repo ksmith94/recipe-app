@@ -3,3 +3,5 @@ dist/
 /apps/api/.env
 .env
 .DS_Store
+*.tsbuildinfo
+**/*.tsbuildinfo

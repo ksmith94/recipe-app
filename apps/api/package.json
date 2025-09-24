@@ -6,6 +6,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "pnpm --filter @repo/contracts... build",
     "dev": "tsx watch src/index.ts",
     "build": "tsc -b",
     "start": "node dist/index.js"
