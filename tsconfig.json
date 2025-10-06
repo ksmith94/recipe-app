@@ -7,14 +7,14 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@repo/contracts": ["packages/contracts/src/index.ts"],
-      "@repo/contracts/*": ["packages/contracts/src/*"],
-      "@repo/client": ["packages/client/src/index.ts"],
-      "@repo/client/*": ["packages/client/src/*"]
-    }
+    "skipLibCheck": true
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@repo/contracts": ["packages/contracts/src/index.ts"],
+    //   "@repo/contracts/*": ["packages/contracts/src/*"],
+    //   "@repo/client": ["packages/client/src/index.ts"],
+    //   "@repo/client/*": ["packages/client/src/*"]
+    // }
   },
   "references": [
     { "path": "packages/contracts" },
