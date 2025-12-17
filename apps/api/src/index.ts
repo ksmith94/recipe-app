@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv';
 import recipeRoutes from './routes/recipes.js';
 import ingredientRoutes from './routes/ingredients.js';
 import instructionRoutes from './routes/instructions.js';
+import healthRoutes from './routes/health.js';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/recipes/', recipeRoutes);
 app.use('/api/ingredients', ingredientRoutes);
 app.use('/api/instructions', instructionRoutes);
+app.use('/api/health', healthRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

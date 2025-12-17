@@ -1,10 +1,9 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import pool from '../db.js';
+import { Router } from 'express';
 
-export default async function handler(
-  _req: VercelRequest,
-  res: VercelResponse
-) {
+const router = Router();
+
+router.get('/', async (_req, res) => {
   try {
     const url = process.env.DATABASE_URL || '';
     // mask secrets; show only host indicator
@@ -25,4 +24,6 @@ export default async function handler(
     console.error('HEALTH_ERROR', e);
     res.status(500).json({ error: String(e?.message || e) });
   }
-}
+});
+
+export default router;
