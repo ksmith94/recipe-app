@@ -8,8 +8,13 @@
   "exports": {
     ".": "./dist/index.ts"
   },
-  "scripts": {"build": "tsc -b"},
+  "scripts": {
+    "build": "tsc -b"
+  },
   "dependencies": {
     "@repo/contracts": "*"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0"
   }
 }
