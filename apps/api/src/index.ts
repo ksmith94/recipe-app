@@ -1,5 +1,4 @@
 import express from 'express';
-import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { sessionMiddleware } from './auth/session.js';
 import authRoutes from './routes/auth.js';
